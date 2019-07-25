@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/bin/env python3
 
 import os
 import json
@@ -41,7 +41,7 @@ def start(start, end):
         hdf=True,
         use_input=True,
         name="Generate Distance Matrix",
-        pcount=2
+        pcount=16
     )
     # finalise results
     workflow.finalise(file_type="h5", reference="Generate Distance Matrix")
