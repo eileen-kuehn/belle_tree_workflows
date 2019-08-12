@@ -63,11 +63,12 @@ def start(start, end):
     workflow.prepare_intermediate_as_input(reference="Index trees and representatives")
     workflow.add_task(
         cli_path=Structure.workflow_cli(),
-        cmd="process-as-vector",
+        cmd="batch-process-as-vector",
         save=True,
         hdf=True,
         use_input=True,
-        name="Generate Distance Vectors"
+        name="Generate Distance Vectors",
+        pcount=16
     )
     # finalise results
     workflow.finalise(file_type="h5", reference="Generate Distance Matrix")
