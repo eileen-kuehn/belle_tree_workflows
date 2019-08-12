@@ -27,7 +27,7 @@ def start(start, end):
         cmd="index-valid-hdf-trees",
         save=True,
         pcount=1,
-        paths=[
+        trees=[
             os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/Bd_Kpi_mdst_000001_prod00006875_task00000001.h5"),
             os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/Bd_Kspi0_mdst_000001_prod00006201_task00000001.h5")
         ],
@@ -43,8 +43,33 @@ def start(start, end):
         name="Generate Distance Matrix",
         pcount=16
     )
+    workflow.add_task(
+        cli_path=Structure.data_selection_cli(),
+        cmd="index-valid-hdf-trees",
+        save=True,
+        pcount=1,
+        representatives=[
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/Bd_Kpi_mdst_000001_prod00006875_task00000001.h5"),
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/Bd_Kspi0_mdst_000001_prod00006201_task00000001.h5")
+        ],
+        trees=[
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110020000_Kpi_Dplus.h5"),
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110020000_Kpi_Dstar.h5")
+        ],
+        name="Index trees and representatives"
+    )
+    workflow.prepare_intermediate_as_input(reference="Index trees and representatives")
+    workflow.add_task(
+        cli_path=Structure.workflow_cli(),
+        cmd="process-as-vector",
+        save=True,
+        hdf=True,
+        use_input=True,
+        name="Generate Distance Vectors"
+    )
     # finalise results
     workflow.finalise(file_type="h5", reference="Generate Distance Matrix")
+    workflow.finalise(file_type="h5", reference="Generate Distance Vectors")
     workflow.execute(env_vars, start=start, end=end)
 
 
