@@ -54,7 +54,9 @@ def start(start, end):
         ],
         trees=[
             os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110020000_Kpi_Dplus.h5"),
-            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110020000_Kpi_Dstar.h5")
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110020000_Kpi_Dstar.h5"),
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110026100_Kspi0_Dplus.h5"),
+            os.path.join(os.path.dirname(__file__), os.pardir, "data/trees/toy_B-Kpi/1110026100_Kspi0_Dstar.h5")
         ],
         name="Index trees and representatives"
     )
