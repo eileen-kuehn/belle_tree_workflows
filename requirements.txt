@@ -22,5 +22,5 @@ zipp==0.5.2
 zss==1.2.0
 git+git://github.com/eileen-kuehn/assess@master#egg=assess
 git+git://github.com/eileen-kuehn/assess_workflows@master#egg=assess_workflows
-git+git://github.com/eileen-kuehn/dengraph@master#egg=dengraph
+git+git://github.com/MaineKuehn/dengraph@master#egg=dengraph
 git+git://github.com/eileen-kuehn/gnmutils@master#egg=gnmutils
